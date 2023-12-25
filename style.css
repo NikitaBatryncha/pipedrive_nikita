@@ -1,0 +1,16 @@
+.form {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 30px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 600px;
+  height: 450px;
+  background-color: #ECECEC;
+}
+
+.form__fraction {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
