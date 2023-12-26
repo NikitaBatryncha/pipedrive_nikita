@@ -1,22 +1,8 @@
-const express = require('express');
-const app = express();
-const pipedrive=  require('pipedrive')
+import AppExtensionsSDK from '@pipedrive/app-extensions-sdk';
 
-const PORT = 1800;
+// SDK detects identifier from URL and uses default
+      sizeconstsdk = await new AppExtensionsSDK().initialize();
 
-const defaultClient = new pipedrive.ApiClient();
-
-let apiToken = defaultClient.authentications.api_key;
-apiToken.apiKey = '1f04bad961999d21c81e51bf1fb093e33ea5060c';
-
-app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
-});
-
-app.get('/', async (req, res) => {
-    const api = new pipedrive.DealsApi(defaultClient);
-    const deals = await api.getDeals();
-
-    res.send(deals);
-    console.log(deals)
-});
+// Pass in id manually and provide custom UI size
+const sdk = await new AppExtensionsSDK({ identifier: '123abc' })
+  .initialize({ size: { height: 500 } });

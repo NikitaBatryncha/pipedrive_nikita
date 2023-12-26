@@ -3,48 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./style.css">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script> -->
   <script defer src="./index.js"></script>
   <title>Document</title>
 </head>
 <body>
   <form action="" class="form">
     <span class="form__fraction">
-      <label for="">Client details</label>
-      <input type="text" placeholder="First name">
-      <input type="text" placeholder="Last name">
+      <label for="" class="form__title">Client details</label>
+      <span class="input__wrapper">
+        <input type="text" placeholder="First name">
+        <input type="text" placeholder="Last name">
+      </span>
       <input type="tel" placeholder="Phone">
       <input type="email" placeholder="Email (optional)">
     </span>
     <span class="form__fraction">
-      <label for="">Job type</label>
-      <select name="Job type" id="">
-        <option value="type 1">type 1</option>
-        <option value="type 2">type 2</option>
-        <option value="type 3">type 3</option>
-        <option value="type 4">type 4</option>
-      </select>
-      <select name="Job source" id="" class="form__fraction">
-        <option value="type 1">type 1</option>
-        <option value="type 2">type 2</option>
-        <option value="type 3">type 3</option>
-        <option value="type 4">type 4</option>
-      </select>
+      <label for="" class="form__title">Job type</label>
+      <span class="input__wrapper">
+        <select name="Job type" id="">
+          <option value="Job type" selected disabled>Job type</option>
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select>
+        <select name="Job source" id="">
+          <option value="Job source" selected disabled>Job source</option>
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select>
+      </span>
       <textarea placeholder="Job description (optional)" style="resize: none;"></textarea>
     </span>
     <span class="form__fraction">
-      <label for="">Service location</label>
-      <input type="text">
-      <input type="text">
-      <input type="tel">
-      <input type="email">
+      <label for="" class="form__title">Service location</label>
+      <input type="text" placeholder="Address">
+      <input type="text" placeholder="City">
+      <input type="tel" placeholder="State">
+      <span class="input__wrapper">
+        <input type="email" placeholder="Zip code">
+        <select name="Area" id="">
+          <option value="Area" selected disabled>Area</option>
+
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select>
+      </span>
     </span>
     <span class="form__fraction">
-      <label for="">Scheduled</label>
-      <input type="text">
-      <input type="text">
-      <input type="tel">
-      <input type="email">
+      <label for="" class="form__title">Scheduled</label>
+      <input type="date" placeholder="Start date">
+      <span class="input__wrapper">
+        <input type="time" placeholder="Start time">
+        <input type="time" placeholder="End time">
+      </span>
+      <select name="" id="" aria-valuetext="Area">
+        <option value="Test select" selected disabled>Test select</option>
+        <option value="type 1">type 1</option>
+        <option value="type 2">type 2</option>
+        <option value="type 3">type 3</option>
+        <option value="type 4">type 4</option>
+      </select>
     </span>
   </form>
 </body>
