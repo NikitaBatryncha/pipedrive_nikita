@@ -81,7 +81,7 @@
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK().initialize({size: {width: 800}});
+        const sdk = await new AppExtensionsSDK().initialize({size: {width: 800, height: 500}});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
