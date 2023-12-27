@@ -81,7 +81,7 @@
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK().initialize();
+        const sdk = await new AppExtensionsSDK().initialize({width: 626, height: 450});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
@@ -90,8 +90,7 @@
             item: 'https://nikitabatryncha.github.io/pipedrive_nikita/',
           },
           options: {
-            width: 626,
-            height: 450,
+            
           },
         });
       } else {
