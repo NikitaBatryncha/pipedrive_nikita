@@ -81,18 +81,14 @@
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK().initialize();
+        const sdk = await new AppExtensionsSDK().initialize({size: {width: 800}});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
           action_id: 'fffff',
           data: {
             item: 'https://nikitabatryncha.github.io/pipedrive_nikita/',
-          },
-          options: {
-            width: 626,
-            height: 450,
-          },
+          }
         });
       } else {
         console.error('AppExtensionsSDK не определен. Убедитесь, что он загружен.');
