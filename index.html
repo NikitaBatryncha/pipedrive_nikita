@@ -5,27 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
   <script defer src="./src/server.js"></script>
-  <script defer src="./src/index.js"></script>
+  <script defer src="./src/index.js"></script> -->
   <title>Document</title>
 </head>
 <body>
-  <script>
-    (async function() {
-      const sdk = await new AppExtensionsSDK({ identifier: '123abc' })
-        .initialize({ size: { height: 500 } });
-      console.log(sdk)
-      const { status } = await sdk.execute(Command.OPEN_MODAL, {
-      type: Modal.CUSTOM_MODAL,
-      action_id: 'Open settings',
-      data: {
-        item: 'https://nikitabatryncha.github.io/pipedrive_nikita/?code=10095070.12960094.f4e3b872d974e4d4376a729d17db3f0ae4d0e69c',
-      },
-    });
-    })();
-  </script>
-
   <form action="#" class="form" id="xyz">
     <span class="form__fraction client_details">
       <label for="" class="form__title">Client details</label>
@@ -90,5 +75,28 @@
     </span>
     <button type="submit">Save</button>
   </form>
+  <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
+  <script src="./src/server.js"></script>
+  <script src="./src/index.js"></script>
+  <script >
+    (async () => {
+      // Убедитесь, что AppExtensionsSDK загружен перед его использованием
+      if (typeof AppExtensionsSDK !== 'undefined') {
+        console.log('sdk was loaded')
+        const sdk = await new AppExtensionsSDK({ identifier: '123abc' })
+          .initialize({ size: { height: 500 } });
+        const { status } = await sdk.execute(Command.OPEN_MODAL, {
+          type: Modal.CUSTOM_MODAL,
+          action_id: 'Open settings',
+          data: {
+            item: 'https://nikitabatryncha.github.io/pipedrive_nikita/?code=10095070.12960094.f4e3b872d974e4d4376a729d17db3f0ae4d0e69c',
+          }
+        });
+        console.log({ status });
+      } else {
+        console.error('AppExtensionsSDK не определен. Убедитесь, что он загружен.');
+      }
+    })();
+  </script>
 </body>
 </html>
