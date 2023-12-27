@@ -30,7 +30,6 @@ const lastnameInpt = createInput(text, 'surname', 'Last name');
 const telInpt = createInput(tel, 'tel', 'Phone');
 const emailInpt = createInput(email, 'email', 'Email (optional)');
 client_details.append(nameInpt, lastnameInpt, telInpt, emailInpt)
-
  FORM.addEventListener('submit', async (event) => {
   event.preventDefault();
   console.log(nameInpt.value, lastnameInpt.value, telInpt.value, emailInpt.value);

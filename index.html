@@ -11,7 +11,12 @@
   <title>Document</title>
 </head>
 <body>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+  <script>
+    (async function() {
+      const sdk = await new AppExtensionsSDK({ identifier: '11dc76fd-7603-49af-b00f-134540a8a2a9' }).initialize();
+      console.log(sdk)
+    })();
+  </script>
 
   <form action="/" class="form" id="xyz">
     <span class="form__fraction client_details">
