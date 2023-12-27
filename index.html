@@ -13,12 +13,20 @@
 <body>
   <script>
     (async function() {
-      const sdk = await new AppExtensionsSDK({ identifier: '11dc76fd-7603-49af-b00f-134540a8a2a9' }).initialize();
+      const sdk = await new AppExtensionsSDK({ identifier: '123abc' })
+        .initialize({ size: { height: 500 } });
       console.log(sdk)
+      const { status } = await sdk.execute(Command.OPEN_MODAL, {
+      type: Modal.CUSTOM_MODAL,
+      action_id: 'Open settings',
+      data: {
+        item: 'xyz',
+      },
+    });
     })();
   </script>
 
-  <form action="/" class="form" id="xyz">
+  <form action="#" class="form" id="xyz">
     <span class="form__fraction client_details">
       <label for="" class="form__title">Client details</label>
       <span class="input__wrapper">
