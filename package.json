@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@pipedrive/app-extensions-sdk": "^0.9.0",
+    "axios": "^1.6.3",
     "express": "^4.18.2",
     "path": "^0.12.7",
     "pipedrive": "^22.3.0",

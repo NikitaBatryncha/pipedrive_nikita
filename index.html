@@ -3,41 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./normalize.css">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
-  <script defer type="module" src="./dist/bundle.js"></script>
-  <script defer type="module" src="./index.js"></script>
-  <script defer type="module" src="./server.js"></script>
+  <script defer src="./src/server.js"></script>
+  <script defer src="./src/index.js"></script>
   <title>Document</title>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    (async function() {
-      const sdk = await new AppExtensionsSDK().initialize();
+    const clientId = '4f08d258b8880027';
+    const clientSecret = '3c91561864afa4a79d4454257b858ebe8ba0d43e';
+    const redirectUri = 'https://nikitabatryncha.github.io/pipedrive_nikita/';
+    const authorizationCode = '10095070.12960094.cb4b073154384870864b470c970395d5cebea36e';
+
+    (async () => {
+      try {
+        const authHeader = `Basic ${btoa(`${clientId}:${clientSecret}`)}`;
+        const tokenUrl = 'https://oauth.pipedrive.com/oauth/token';
+
+        const response = await axios.post(
+          tokenUrl,
+          `grant_type=authorization_code&code=${authorizationCode}&redirect_uri=${redirectUri}`,
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'Authorization': authHeader,
+            },
+          }
+        );
+
+        const { access_token, refresh_token } = response.data;
+        console.log('Access Token:', access_token);
+        console.log('Refresh Token:', refresh_token);
+      } catch (error) {
+        console.error('Error fetching tokens:', error.response ? error.response.data : error.message);
+      }
     })();
-    const { status } = await sdk.execute(Command.OPEN_MODAL, {
-      type: Modal.CUSTOM_MODAL,
-      action_id: "d58609ac-e90b-4aa1-9456-6af7e9e7a0ea",
-      data: {
-        item: 'xyz',
-      },
-    });
   </script>
+  
   <form action="/" class="form" id="xyz">
-    <span class="form__fraction">
+    <span class="form__fraction client_details">
       <label for="" class="form__title">Client details</label>
       <span class="input__wrapper">
-        <input type="text" placeholder="First name">
-        <input type="text" placeholder="Last name">
+        <!-- <input type="text" placeholder="First name"> -->
+        <!-- <input type="text" placeholder="Last name"> -->
       </span>
-      <input type="tel" placeholder="Phone">
-      <input type="email" placeholder="Email (optional)">
+      <!-- <input type="tel" placeholder="Phone"> -->
+      <!-- <input type="email" placeholder="Email (optional)"> -->
     </span>
-    <span class="form__fraction">
+    <span class="form__fraction job_type">
       <label for="" class="form__title">Job type</label>
       <span class="input__wrapper">
-        <select name="Job type" id="">
+        <!-- <select name="Job type" id="">
           <option value="Job type" selected disabled>Job type</option>
           <option value="type 1">type 1</option>
           <option value="type 2">type 2</option>
@@ -50,17 +69,17 @@
           <option value="type 2">type 2</option>
           <option value="type 3">type 3</option>
           <option value="type 4">type 4</option>
-        </select>
+        </select> -->
       </span>
-      <textarea placeholder="Job description (optional)" style="resize: none;"></textarea>
+      <!-- <textarea placeholder="Job description (optional)" style="resize: none;"></textarea> -->
     </span>
-    <span class="form__fraction">
+    <span class="form__fraction service_location">
       <label for="" class="form__title">Service location</label>
-      <input type="text" placeholder="Address">
+      <!-- <input type="text" placeholder="Address">
       <input type="text" placeholder="City">
-      <input type="tel" placeholder="State">
+      <input type="tel" placeholder="State"> -->
       <span class="input__wrapper">
-        <input type="number" placeholder="Zip code">
+        <!-- <input type="number" placeholder="Zip code">
         <select name="Area" id="">
           <option value="Area" selected disabled>Area</option>
 
@@ -68,23 +87,23 @@
           <option value="type 2">type 2</option>
           <option value="type 3">type 3</option>
           <option value="type 4">type 4</option>
-        </select>
+        </select> -->
       </span>
     </span>
-    <span class="form__fraction">
+    <span class="form__fraction scheduled">
       <label for="" class="form__title">Scheduled</label>
-      <input type="date" placeholder="Start date">
+      <!-- <input type="date" placeholder="Start date"> -->
       <span class="input__wrapper">
-        <input type="time" placeholder="Start time">
-        <input type="time" placeholder="End time">
+        <!-- <input type="time" placeholder="Start time">
+        <input type="time" placeholder="End time"> -->
       </span>
-      <select name="" id="" aria-valuetext="Area">
+      <!-- <select name="" id="" aria-valuetext="Area">
         <option value="Test select" selected disabled>Test select</option>
         <option value="type 1">type 1</option>
         <option value="type 2">type 2</option>
         <option value="type 3">type 3</option>
         <option value="type 4">type 4</option>
-      </select>
+      </select> -->
     </span>
     <button type="submit">Save</button>
   </form>
