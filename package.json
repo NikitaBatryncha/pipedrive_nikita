@@ -1,15 +1,11 @@
 {
-  "homepage": "http://PikchaGameDev.github.io/react-deploy",
-  "name": "reactapp",
+  "name": "pipedrive",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "predeploy": "npm run build:dev",
-    "deploy": "gh-pages -d build:dev",
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=lPPnkXUvq_wlMrKy-n9fMQ node ./bin/dev.js",
+    "build": "webpack",
+    "start": "webpack serve --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nikita",
@@ -17,10 +13,17 @@
   "dependencies": {
     "@pipedrive/app-extensions-sdk": "^0.9.0",
     "express": "^4.18.2",
+    "path": "^0.12.7",
     "pipedrive": "^22.3.0",
+    "querystring-es3": "^0.2.1",
+    "require": "^2.4.20",
+    "uuid": "^9.0.1",
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babel-loader": "^9.1.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.5.2",

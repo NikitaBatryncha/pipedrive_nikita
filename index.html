@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./normalize.css">
   <link rel="stylesheet" href="./style.css">
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script> -->
-  <script defer src="./index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
+  <script defer type="module" src="./dist/bundle.js"></script>
+  <script defer type="module" src="./index.js"></script>
+  <script defer type="module" src="./server.js"></script>
   <title>Document</title>
 </head>
 <body>
-  <form action="" class="form">
+  <script>
+    (async function() {
+      const sdk = await new AppExtensionsSDK().initialize();
+    })();
+    const { status } = await sdk.execute(Command.OPEN_MODAL, {
+      type: Modal.CUSTOM_MODAL,
+      action_id: "d58609ac-e90b-4aa1-9456-6af7e9e7a0ea",
+      data: {
+        item: 'xyz',
+      },
+    });
+  </script>
+  <form action="/" class="form" id="xyz">
     <span class="form__fraction">
       <label for="" class="form__title">Client details</label>
       <span class="input__wrapper">
@@ -46,7 +60,7 @@
       <input type="text" placeholder="City">
       <input type="tel" placeholder="State">
       <span class="input__wrapper">
-        <input type="email" placeholder="Zip code">
+        <input type="number" placeholder="Zip code">
         <select name="Area" id="">
           <option value="Area" selected disabled>Area</option>
 
@@ -72,6 +86,7 @@
         <option value="type 4">type 4</option>
       </select>
     </span>
+    <button type="submit">Save</button>
   </form>
 </body>
 </html>
