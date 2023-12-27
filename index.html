@@ -86,7 +86,7 @@
       // Убедитесь, что AppExtensionsSDK загружен перед его использованием
       if (typeof AppExtensionsSDK !== 'undefined') {
         console.log('sdk was loaded')
-        const sdk = await new AppExtensionsSDK().initialize({width: 626, height: 450});
+        const sdk = await new AppExtensionsSDK({identifier: 'xyz'}).initialize({width: 626, height: 450});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
