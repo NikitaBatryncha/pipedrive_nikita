@@ -81,7 +81,7 @@
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK({ identifier: '10095070.12960094.9edd5b21e440c1f18cc05923611105a0b81ef94f' }).initialize();
+        const sdk = await new AppExtensionsSDK({ identifier: '10095070:12960094:d5814013402a8e20ef1b2eafe4489ba21dd44824' }).initialize();
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
