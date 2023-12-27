@@ -94,7 +94,7 @@
             item: 'https://nikitabatryncha.github.io/pipedrive_nikita/',
           }
         });
-        console.log({ status });
+        await sdk.execute(Command.RESIZE, { width: 700 });
       } else {
         console.error('AppExtensionsSDK не определен. Убедитесь, что он загружен.');
       }
