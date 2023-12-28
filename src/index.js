@@ -112,5 +112,5 @@ const dealData = {
 
 FORM.addEventListener('submit', async (event) => {
   event.preventDefault();
-  await createDealInPipedrive()
+  await createDealInPipedrive(dealData)
 });
