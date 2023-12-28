@@ -1,7 +1,7 @@
 const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
-const dealIdFromUrl = window.location.pathname.split('/').pop();
+const dealIdFromUrl = window.location.pathname;
 console.log('Deal ID from URL:', dealIdFromUrl);
 
 const createDealInPipedrive = async (dealData) => {
