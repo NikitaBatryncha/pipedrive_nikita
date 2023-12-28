@@ -193,6 +193,8 @@ input::placeholder, textarea::placeholder {
 }
 
 button {
+  display: flex;
+  align-items: center;
   padding: 20px;
   background-color: rgb(85, 143, 27);
   color: #E0E0E0;
