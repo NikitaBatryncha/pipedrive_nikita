@@ -1,3 +1,4 @@
+
 //Here I find form and input wrappers
 const FORM = document.getElementById('xyz');
 const client_details = FORM.querySelector('.client_details');
@@ -26,7 +27,7 @@ function createInput(type, id, placeholder) {
 
 function createSelect(id, value) {
   const select = document.createElement('select');
-  selectPlaceholder = document.createElement('option');
+  const selectPlaceholder = document.createElement('option');
   selectPlaceholder.text = value;
   select.id = id;
   select.append(selectPlaceholder)
@@ -37,9 +38,6 @@ function createOpt(value) {
   const option = document.createElement('option');
   option.value = value;
   option.text = value;
-  option.style.fontSize = '12px';
-  option.style.fontWeight = '500';
-  option.style.color = '#868686';
   return option
 }
 
@@ -79,38 +77,3 @@ scheduledWrapper.append(starttimeInpt, endtimeInpt);
 const testSelect = createSelect('test', 'Test select');
 scheduled.append(startdateInpt, scheduledWrapper, testSelect);
 
-const createDealInPipedrive = async (dealData) => {
-  const apiUrl = 'https://zany-replace.pipedrive.com/v1/deals?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686';
-
-  try {
-    // Make the Axios POST request
-    const response = await axios.post(apiUrl, dealData, {
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer 9299a8a8cee523f120b7c2f26c807983d7ce7686'
-      },
-    });
-
-    // Log the response data (you can handle it according to your application's logic)
-    console.log('Deal created successfully:', response.data);
-
-    return response.data; // Return the response data if needed
-  } catch (error) {
-    // Handle errors
-    console.error('Error creating deal:', error);
-    throw error; // Throw the error for further handling if needed
-  }
-};
-
-const dealData = {
-  title: nameInpt.value,
-  value: 123,
-  currency: 'USD',
-  user_id: 12960094,
-  org_id: 1,
-};
-
-FORM.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  await createDealInPipedrive(dealData)
-});

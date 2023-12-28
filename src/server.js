@@ -1,31 +1,35 @@
-// const axios = require('axios');
+const createDealInPipedrive = async (dealData) => {
+  const apiUrl = 'https://zany-replace.pipedrive.com/v1/deals?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686';
 
-// const clientId = '4f08d258b8880027';
-// const clientSecret = '3c91561864afa4a79d4454257b858ebe8ba0d43e';
-// const redirectUri = 'https://nikitabatryncha.github.io/pipedrive_nikita/';
-// const authorizationCode = '10095070.12960094.cb4b073154384870864b470c970395d5cebea36e';
+  try {
+    // Make the Axios POST request
+    const response = await axios.post(apiUrl, dealData, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Bearer 9299a8a8cee523f120b7c2f26c807983d7ce7686'
+      },
+    });
 
-// // Step 4: Exchange authorization_code for tokens
-// (async () => {
-//   try {
-//     const authHeader = `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`;
-//     const tokenUrl = 'https://oauth.pipedrive.com/oauth/token';
+    // Log the response data (you can handle it according to your application's logic)
+    console.log('Deal created successfully:', response.data);
 
-//     const response = await axios.post(
-//       tokenUrl,
-//       `grant_type=authorization_code&code=${authorizationCode}&redirect_uri=${redirectUri}`,
-//       {
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded',
-//           'Authorization': authHeader,
-//         },
-//       }
-//     );
+    return response.data; // Return the response data if needed
+  } catch (error) {
+    // Handle errors
+    console.error('Error creating deal:', error);
+    throw error; // Throw the error for further handling if needed
+  }
+};
 
-//     const { access_token, refresh_token } = response.data;
-//     console.log('Access Token:', access_token);
-//     console.log('Refresh Token:', refresh_token);
-//   } catch (error) {
-//     console.error('Error fetching tokens:', error.response ? error.response.data : error.message);
-//   }
-// })()
+const dealData = {
+  title: 'Your Deal Title',
+  value: 123,
+  currency: 'USD',
+  user_id: 12960094,
+  org_id: 1,
+};
+
+FORM.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  await createDealInPipedrive(dealData)
+})
