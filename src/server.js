@@ -22,7 +22,7 @@ const createDealInPipedrive = async (dealData) => {
 };
 
 const dealData = {
-  title: 'Your Deal Title',
+  title: 'Your Deal Title!',
   value: 123,
   currency: 'USD',
   user_id: 12960094,
