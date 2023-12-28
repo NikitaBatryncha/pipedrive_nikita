@@ -1,8 +1,10 @@
 const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
-const createDealInPipedrive = async (dealData) => {
-  // const apiUrl = 'https://zany-replace.pipedrive.com/v1/deals?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686';
+const dealIdFromUrl = window.location.href.split('/').pop();
+console.log('Deal ID from URL:', dealIdFromUrl);
+
+const createDealInPipedrive = async (dealData) => {;
   const apiUrl = 'https://zany-replace.pipedrive.com/v1/deals/84?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686';
   try {
     const response = await axios.put(apiUrl, dealData, {
