@@ -1,31 +1,85 @@
-// const axios = require('axios');
+//Here I find form and input wrappers
+const FORM = document.getElementById('xyz');
+const client_details = FORM.querySelector('.client_details');
+const job_type = FORM.querySelector('.job_type');
+const service_location = FORM.querySelector('.service_location');
+const scheduled = FORM.querySelector('.scheduled');
 
-// const clientId = '4f08d258b8880027';
-// const clientSecret = '3c91561864afa4a79d4454257b858ebe8ba0d43e';
-// const redirectUri = 'https://nikitabatryncha.github.io/pipedrive_nikita/';
-// const authorizationCode = '10095070.12960094.cb4b073154384870864b470c970395d5cebea36e';
+//Here I initialize input types
+const text = 'text';
+const number = 'number';
+const tel = 'tel';
+const email = 'email';
+const date = 'date';
+const time = 'time';
 
-// // Step 4: Exchange authorization_code for tokens
-// (async () => {
-//   try {
-//     const authHeader = `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`;
-//     const tokenUrl = 'https://oauth.pipedrive.com/oauth/token';
+// Create function which will create reusable inputs
 
-//     const response = await axios.post(
-//       tokenUrl,
-//       `grant_type=authorization_code&code=${authorizationCode}&redirect_uri=${redirectUri}`,
-//       {
-//         headers: {
-//           'Content-Type': 'application/x-www-form-urlencoded',
-//           'Authorization': authHeader,
-//         },
-//       }
-//     );
+function createInput(type, id, placeholder) {
+  const input = document.createElement('input');
+  input.type = type;
+  input.id = id;
+  input.placeholder = placeholder;
 
-//     const { access_token, refresh_token } = response.data;
-//     console.log('Access Token:', access_token);
-//     console.log('Refresh Token:', refresh_token);
-//   } catch (error) {
-//     console.error('Error fetching tokens:', error.response ? error.response.data : error.message);
-//   }
-// })()
+  return input;
+}
+
+function createSelect(id, value) {
+  const select = document.createElement('select');
+  selectPlaceholder = document.createElement('option');
+  selectPlaceholder.text = value;
+  select.id = id;
+  select.append(selectPlaceholder)
+  return select
+}
+
+function createOpt(value) {
+  const option = document.createElement('option');
+  option.value = value;
+  option.text = value;
+  option.style.fontSize = '12px';
+  option.style.fontWeight = '500';
+  option.style.color = '#868686';
+  return option
+}
+
+// Put inputs in form
+
+const nameInpt = createInput(text, 'name', 'First name');
+const lastnameInpt = createInput(text, 'surname', 'Last name');
+const telInpt = createInput(tel, 'tel', 'Phone');
+const emailInpt = createInput(email, 'email', 'Email (optional)');
+const client__wrapper = client_details.querySelector('.input__wrapper--1');
+client__wrapper.append(nameInpt, lastnameInpt)
+client_details.append(client__wrapper, telInpt, emailInpt);
+
+const jobtypeSelector = createSelect('Job_type', 'Job type');
+const jobsourceSelector = createSelect('Job_source', 'Job source');
+const jobtypeWrapper = job_type.querySelector('.input__wrapper--2');
+jobtypeWrapper.append(jobtypeSelector, jobsourceSelector);
+const textarea = document.createElement('textarea');
+textarea.placeholder = 'Job description (optional)'
+job_type.append(jobtypeWrapper, textarea);
+
+const addressInpt = createInput(text, 'address', 'Adress');
+const cityInpt = createInput(text, 'city', 'City');
+const stateInpt = createInput(text, 'state', 'State');
+const zipInpt = createInput(number, 'zip', 'Zip code');
+const areaSelect = createSelect('area', 'Area');
+
+const serviceWrapper = service_location.querySelector('.input__wrapper--3')
+serviceWrapper.append(zipInpt, areaSelect);
+service_location.append(addressInpt, cityInpt, stateInpt, serviceWrapper)
+
+const startdateInpt = createInput(date, 'start_date', 'Start date');
+const starttimeInpt = createInput(time, 'start_time', 'Start time');
+const endtimeInpt = createInput(time, 'end_time', 'End time');
+const scheduledWrapper = scheduled.querySelector('.input__wrapper--4');
+scheduledWrapper.append(starttimeInpt, endtimeInpt);
+const testSelect = createSelect('test', 'Test select');
+scheduled.append(startdateInpt, scheduledWrapper, testSelect);
+
+FORM.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  console.log(nameInpt.value, lastnameInpt.value, telInpt.value, emailInpt.value);
+});
