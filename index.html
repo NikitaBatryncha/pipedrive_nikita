@@ -11,12 +11,12 @@
 
 </head>
 <body>
-
   <form action="#" class="form" id="xyz">
     <span class="form__fraction client_details">
       <label for="" class="form__title">Client details</label>
-      <span class="input__wrapper input__wrapper--1">
-        <label for="" class="form__title">Client details</label>
+      <span class="input__wrapper">
+        <!-- <input type="text" placeholder="First name"> -->
+        <!-- <input type="text" placeholder="Last name"> -->
       </span>
     </span>
     <span class="form__fraction job_type">
@@ -41,19 +41,17 @@
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK().initialize({width: 626, height: 450});
+        console.log('sdk was loaded')
+        const sdk = await new AppExtensionsSDK({identifier: 'xyz'}).initialize({width: 626, height: 450});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
-          action_id: 'fffff',
+          action_id: 'ADD_NEW_JOB',
           data: {
             item: 'https://nikitabatryncha.github.io/pipedrive_nikita/',
-          },
-          options: {
-            width: 626,
-            height: 450,
-          },
+          }
         });
+        console.log({ status });
       } else {
         console.error('AppExtensionsSDK не определен. Убедитесь, что он загружен.');
       }
@@ -61,3 +59,4 @@
   </script>
 </body>
 </html>
+
