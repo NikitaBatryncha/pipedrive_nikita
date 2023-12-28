@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/style.css">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
+  <script defer src="./src/server.js"></script>
+  <script defer src="./src/index.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/@pipedrive/app-extensions-sdk@0/dist/index.umd.js"></script>
   <title>Document</title>
 
@@ -17,40 +20,84 @@
       <label for="" class="form__title">Client details</label>
       <span class="input__wrapper input__wrapper--1">
         <label for="" class="form__title">Client details</label>
+        <!-- <input type="text" placeholder="First name"> -->
+        <!-- <input type="text" placeholder="Last name"> -->
       </span>
+      <!-- <input type="tel" placeholder="Phone"> -->
+      <!-- <input type="email" placeholder="Email (optional)"> -->
     </span>
     <span class="form__fraction job_type">
       <label for="" class="form__title">Job type</label>
       <span class="input__wrapper input__wrapper--2">
+        <!-- <select name="Job type" id="">
+          <option value="Job type" selected disabled>Job type</option>
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select>
+        <select name="Job source" id="">
+          <option value="Job source" selected disabled>Job source</option>
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select> -->
       </span>
+      <!-- <textarea placeholder="Job description (optional)" style="resize: none;"></textarea> -->
     </span>
     <span class="form__fraction service_location">
       <label for="" class="form__title">Service location</label>
+      <!-- <input type="text" placeholder="Address">
       <input type="text" placeholder="City">
       <input type="tel" placeholder="State"> -->
       <span class="input__wrapper input__wrapper--3">
+        <!-- <input type="number" placeholder="Zip code">
+
+        <select name="Area" id="">
+          <option value="Area" selected disabled>Area</option>
+
+          <option value="type 1">type 1</option>
+          <option value="type 2">type 2</option>
+          <option value="type 3">type 3</option>
+          <option value="type 4">type 4</option>
+        </select> -->
       </span>
     </span>
     <span class="form__fraction scheduled">
       <label for="" class="form__title">Scheduled</label>
+      <!-- <input type="date" placeholder="Start date"> -->
       <span class="input__wrapper input__wrapper--4">
+        <!-- <input type="time" placeholder="Start time">
+        <input type="time" placeholder="End time"> -->
       </span>
+      <!-- <select name="" id="" aria-valuetext="Area">
+        <option value="Test select" selected disabled>Test select</option>
+        <option value="type 1">type 1</option>
+        <option value="type 2">type 2</option>
+        <option value="type 3">type 3</option>
+        <option value="type 4">type 4</option>
+      </select> -->
     </span>
     <button type="submit">Save</button>
   </form>
-  <script src="./src/server.js"></script>
-  <script src="./src/index.js"></script>
+  <script  src="./src/server.js"></script>
+  <script  src="./src/index.js"></script>
   <script  >
     (async () => {
       if (typeof AppExtensionsSDK !== 'undefined') {
-        const sdk = await new AppExtensionsSDK().initialize({size: {width: 800, height: 600}});
+        const sdk = await new AppExtensionsSDK().initialize({width: 626, height: 450});
         alert(sdk)
         const { status } = await sdk.execute(Command.OPEN_MODAL, {
           type: Modal.CUSTOM_MODAL,
           action_id: 'fffff',
           data: {
             item: 'https://nikitabatryncha.github.io/pipedrive_nikita/',
-          }
+          },
+          options: {
+            width: 626,
+            height: 450,
+          },
         });
       } else {
         console.error('AppExtensionsSDK не определен. Убедитесь, что он загружен.');
@@ -59,3 +106,4 @@
   </script>
 </body>
 </html>
+
