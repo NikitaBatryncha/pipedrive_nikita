@@ -100,7 +100,7 @@ const createDealInPipedrive = async (dealData) => {
 
 const dealData = {
   title: nameInpt.value,
-  value: 123,
+  value: 1200000,
   currency: 'USD',
   user_id: 12960094,
   org_id: 1,
