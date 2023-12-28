@@ -1,5 +1,4 @@
 const successMessage = document.createElement('label');
-successMessage.textContent = 'Success! Data saved';
 successMessage.style.color = 'green';
 
 const createDealInPipedrive = async (dealData) => {
@@ -14,10 +13,11 @@ const createDealInPipedrive = async (dealData) => {
     });
     console.log('Deal created successfully:', response.data);
     if (response.data.success === true) {
+      successMessage.textContent = 'Success! Data saved';
       FORM.append(successMessage);
     }
   } catch (error) {
-    console.error('Error creating deal:', error);
+    successMessage.textContent = 'Somethig went wrong';
     throw error;
   }
 };
