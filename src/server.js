@@ -46,6 +46,8 @@ const Job_source = document.getElementById('Job_source')
 const area = document.getElementById('area')
 const test = document.getElementById('test')
 
+FORM.addEventListener('submit', async (event) => {
+  event.preventDefault();
 const dealData = {
   '62f42dba118c4e5923834d6b07e9b67c77275343': Job_type.value,
   '104a5855c90c873563b7896d93e726a469cab85a': cityInpt.value,
@@ -66,16 +68,5 @@ const dealData = {
   'e1a2c8054ff8c5d39c3645873b762c6ed1bb9d0f': zipInpt.value
 };
 
-FORM.addEventListener('submit', async (event) => {
-  event.preventDefault();
   await createDealInPipedrive(dealData);
-  console.log(Job_type.value, cityInpt.value, stateInpt.value,area.value,telInpt.value,textarea.value, emailInpt.value,test.value,
-address.value,
-Job_source.value,
-endtimeInpt.value,
-firstname.value,
-startdateInpt.value,
-starttimeInpt.value,
-lastnameInpt.value,
-zipInpt.value)
-})
+  )
