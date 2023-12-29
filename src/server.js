@@ -1,8 +1,12 @@
 const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
-const dealIdFromUrl = window.location.href;
-console.log(dealIdFromUrl)
+const url = window.location.href;
+const [start, end] = url.split("&id=_hg4crLxDy");
+
+const selectedIds = start.substring(10, end.length);
+
+console.log(selectedIds); // 90
 
 const createDealInPipedrive = async (dealData) => {;
   const apiUrl = `https://zany-replace.pipedrive.com/v1/deals/${dealIdFromUrl}?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686`;
