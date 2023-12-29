@@ -1,10 +1,8 @@
 const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
-const dealIdFromUrl = window.location.href.split('selectedIds=').pop();
-const match = dealIdFromUrl.match(/selectedIds=([^&]*)/);
-console.log(match);
-console.log('Deal ID from URL:', dealIdFromUrl);
+const dealIdFromUrl = window.location.href;
+console.log(dealIdFromUrl)
 
 const createDealInPipedrive = async (dealData) => {;
   const apiUrl = `https://zany-replace.pipedrive.com/v1/deals/${dealIdFromUrl}?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686`;
