@@ -1,12 +1,17 @@
 const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
-const url = window.location.href;
-const [start, end] = url.split("&id=_hg4crLxDy");
 
-const selectedIds = start.substring(10, end.length);
+const url = window.location.href
+const match = url.match(/selectedIds=([^&]*)/);
+const selectedIds = match && match[1];
 
-console.log(selectedIds); // 90
+// Если вы хотите также захватить "&id=..." в конце, можете использовать:
+const matchWithId = url.match(/selectedIds=([^&]*&id=.*?)(&|$)/);
+const selectedIdsWithId = matchWithId && matchWithId[1];
+
+console.log(selectedIds);
+console.log(selectedIdsWithId);
 
 const createDealInPipedrive = async (dealData) => {;
   const apiUrl = `https://zany-replace.pipedrive.com/v1/deals/${dealIdFromUrl}?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686`;
