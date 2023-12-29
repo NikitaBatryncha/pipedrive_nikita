@@ -69,4 +69,4 @@ const dealData = {
 };
 
   await createDealInPipedrive(dealData);
-  )
+})
