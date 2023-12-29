@@ -69,5 +69,13 @@ const dealData = {
 FORM.addEventListener('submit', async (event) => {
   event.preventDefault();
   await createDealInPipedrive(dealData);
-  console.log('tit ', firstname.value)
+  console.log(Job_type.value, cityInpt.value, stateInpt.value,area.value,telInpt.value,textarea.value, emailInpt.value,test.value,
+address.value,
+Job_source.value,
+endtimeInpt.value,
+firstname.value,
+startdateInpt.value,
+starttimeInpt.value,
+lastnameInpt.value,
+zipInpt.value)
 })
