@@ -2,6 +2,9 @@ const successMessage = document.createElement('label');
 successMessage.style.color = 'green';
 
 const dealIdFromUrl = window.location.href.split('selectedIds=').pop();
+const match = dealIdFromUrl.match(/selectedIds=([^&]*)/);
+const selectedIds = match && match[1];
+console.log(selectedIds);
 console.log('Deal ID from URL:', dealIdFromUrl);
 
 const createDealInPipedrive = async (dealData) => {;
