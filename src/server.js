@@ -6,7 +6,7 @@ const url = window.location.href
 const match = url.match(/selectedIds=([^&]*)/);
 const selectedIds = match && match[1];
 console.log(`https://zany-replace.pipedrive.com/v1/deals/${selectedIds}?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686`)
-
+console.log(selectedIds)
 
 const createDealInPipedrive = async (dealData) => {;
   const apiUrl = `https://zany-replace.pipedrive.com/v1/deals/${selectedIds}?api_token=9299a8a8cee523f120b7c2f26c807983d7ce7686`;
