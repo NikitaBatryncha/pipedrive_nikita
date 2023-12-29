@@ -47,11 +47,6 @@ const area = document.getElementById('area')
 const test = document.getElementById('test')
 
 const dealData = {
-  title: 'test',
-  value: 123,
-  currency: 'USD',
-  user_id: 12960094,
-  org_id: 1,
   '62f42dba118c4e5923834d6b07e9b67c77275343': Job_type.value,
   '104a5855c90c873563b7896d93e726a469cab85a': cityInpt.value,
   '3440b2a8ffdb743e3db79bfcecbb6e022b2097f2': stateInpt.value,
